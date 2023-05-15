@@ -5,7 +5,7 @@ import man2 from '../Images/manwithcard.png';
 
 const Properties = () => {
   return (
-    <section className='grid lg:grid-cols-3'>
+    <section className='grid md:grid-cols-3 '>
       <article className='border-b border-l border-r border-[#7A7A7A] text-center flex flex-col items-center justify-center pt-[90px]'>
         <img src={man1} alt='man with key' className=' mb-[72px]' />
         <h2 className='text-[#201E1C] text-[50px] tracking-[0.04em] font-medium'>
