@@ -48,7 +48,6 @@ const Navbar = () => {
             className='w-[230.49px]  lg:w-[307.49px] lg:h-[40px]'
           />
         )}
-
         <div className='hidden md:flex  gap-4 lg:gap-8 uppercase font-medium'>
           {links.map((link) => {
             const { id, path, text } = link;
@@ -84,7 +83,8 @@ const Navbar = () => {
           })}
         </div>
       </nav>
-      <div className='border border-[#7A7A7A]'></div>
+
+      <div className='border-[0.5px] border-[#7A7A7A]'></div>
     </header>
   );
 };
