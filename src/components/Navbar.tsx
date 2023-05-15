@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import logo from '../Images/navWhite.png';
-import { NavLink } from 'react-router-dom';
+import logo2 from '../Images/Plains & Valleys Logo Small (1).png';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const links = [
@@ -27,29 +28,58 @@ const Navbar = () => {
     },
   ];
 
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
   return (
     <header className=''>
       <nav className='flex items-center justify-between py-6 max-w-7xl mx-auto px-3'>
-        <img
-          src={logo}
-          alt='company logo'
-          className='w-[230.49px]  lg:w-[307.49px] lg:h-[40px]'
-        />
+        {isHomePage ? (
+          <Link to='/'>
+            <img
+              src={logo}
+              alt='company logo'
+              className='w-[230.49px]  lg:w-[307.49px] lg:h-[40px]'
+            />
+          </Link>
+        ) : (
+          <img
+            src={logo2}
+            alt='company logo'
+            className='w-[230.49px]  lg:w-[307.49px] lg:h-[40px]'
+          />
+        )}
+
         <div className='hidden md:flex  gap-4 lg:gap-8 uppercase font-medium'>
           {links.map((link) => {
             const { id, path, text } = link;
             return (
-              <NavLink
-                to={path}
-                key={id}
-                className={({ isActive }) => {
-                  return isActive
-                    ? 'text-[#E3A335] tracking-[0.02em] text-base'
-                    : 'tracking-[0.02em] text-base text-[#FFFBF5]';
-                }}
-              >
-                {text}
-              </NavLink>
+              <>
+                {isHomePage ? (
+                  <NavLink
+                    to={path}
+                    key={id}
+                    className={({ isActive }) => {
+                      return isActive
+                        ? 'text-[#E3A335] tracking-[0.02em] text-base'
+                        : 'tracking-[0.02em] text-base text-[#FFFBF5]';
+                    }}
+                  >
+                    {text}
+                  </NavLink>
+                ) : (
+                  <NavLink
+                    to={path}
+                    key={id}
+                    className={({ isActive }) => {
+                      return isActive
+                        ? 'text-[#E3A335] tracking-[0.02em] text-base'
+                        : 'tracking-[0.02em] text-base text-[#201E1C]';
+                    }}
+                  >
+                    {text}
+                  </NavLink>
+                )}
+              </>
             );
           })}
         </div>
